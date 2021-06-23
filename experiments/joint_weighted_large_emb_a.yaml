@@ -1,0 +1,51 @@
+# Config format schema number
+format_version: 1
+
+###################
+## Model options
+model_params:
+  marginal_model_file: "drive/MyDrive/Motion/MMM/c32c8c30_3_2.01-20.46.hdf5"
+  marginal_experiment_name: "c32c8c30_3.yaml"
+  veh_centroids: "drive/MyDrive/Motion/clusters/smoothed_veh_32.npy"
+  ped_centroids: "drive/MyDrive/Motion/clusters/ped_c8.npy"
+  cyc_centroids: "drive/MyDrive/Motion/clusters/cyc_c30.npy"
+  
+  num_modes: 32
+  loss_type: "mtmp_loss"
+  cls_weight: 60.
+  marginal_loss_weight: 60.
+
+  model: "JointMOEModel"
+
+  dropout: 0.2
+  embedding_method: "large"
+
+###################
+## Train params
+train_params:
+  batch_size: 16
+  eval_batch_size: 16
+  weighted: True
+  validation_file_pattern: "drive/MyDrive/Motion/interaction_data/validation_rr_v2/images-000*"
+  train_file_pattern: "drive/MyDrive/Motion/interaction_data/training_rr/images-0*"
+  eval_file_pattern: "drive/MyDrive/Motion/interaction_data/validation_rr/images-00100-of-*"
+  epochs: 10
+  # initial_lr: 0.000075
+  # initial_lr: 0.00007
+  # initial_lr: 0.00003
+  # initial_lr: 0.000015
+  # initial_lr: 0.000005
+  initial_lr: 0.000004
+  steps: 136000
+  alpha: 0.1
+  save_freq: 5000
+  # initial_weights_file: ""
+  # initial_weights_file: "drive/MyDrive/Motion/MMM/joint_weighted_large_emb_a.01-13.42.hdf5"
+  # initial_weights_file: "drive/MyDrive/Motion/MMM/joint_weighted_large_emb_a.01-11.05.hdf5"
+  # initial_weights_file: "drive/MyDrive/Motion/MMM/joint_weighted_large_emb_a.01-8.65.hdf5"
+  # initial_weights_file: "drive/MyDrive/Motion/MMM/joint_weighted_large_emb_a.01-6.12.hdf5"
+  # initial_weights_file: "drive/MyDrive/Motion/MMM/joint_weighted_large_emb_a.01-5.13.hdf5"
+  # initial_weights_file: "drive/MyDrive/Motion/MMM/joint_weighted_large_emb_a.01-5.06.hdf5"
+  initial_weights_file: "drive/MyDrive/Motion/MMM/joint_weighted_large_emb_a.01-4.79.hdf5"
+  model_file_pattern: "drive/MyDrive/Motion/MMM/joint_weighted_large_emb_a.{epoch:02d}-{loss:.2f}.hdf5"
+  final_file: "drive/MyDrive/Motion/MMM/joint_weighted_large_emb_a.hdf5"

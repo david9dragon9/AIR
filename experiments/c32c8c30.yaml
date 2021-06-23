@@ -1,0 +1,37 @@
+# Config format schema number
+format_version: 1
+
+###################
+## Model options
+model_params:
+  num_modes: 32
+  centroids_filename: "drive/MyDrive/Motion/centroids_8"
+  cls_weight: 300.
+
+  ped_weight: 8.8
+  cyc_weight: 44.
+
+  freeze_backbone: "partial"
+
+  model: "MOEModelWithVariableClusters"
+  num_ps_units: 200
+  loss_type: "mtmp_loss"
+  veh_centroids: "drive/MyDrive/Motion/clusters/smoothed_veh_32.npy"
+  ped_centroids: "drive/MyDrive/Motion/clusters/ped_c8.npy"
+  cyc_centroids: "drive/MyDrive/Motion/clusters/cyc_c30.npy"
+  backbone_weights: "drive/MyDrive/Motion/MMM/backbone_c64_4.hdf5"
+
+###################
+## Train params
+train_params:
+  train_file_pattern: "drive/MyDrive/Motion/train/images-0*"
+  eval_file_pattern: "drive/MyDrive/Motion/validation/images-00000-of-*"
+  eval_batch_size: 64
+  epochs: 2
+  initial_lr: 0.00002
+  steps: 134680
+  alpha: 0.25
+  save_freq: 5000
+  initial_weights_file: ""
+  model_file_pattern: "drive/MyDrive/Motion/MMM/c32c8c30.{epoch:02d}-{loss:.2f}.hdf5"
+  final_file: "drive/MyDrive/Motion/MMM/c32c8c30.hdf5"

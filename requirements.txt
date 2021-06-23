@@ -1,0 +1,5 @@
+tensorflow==2.4.1
+waymo-open-dataset-tf-2-4-0
+tensorflow_graphics
+tensorflow-addons
+PyYAML==5.3.1
